@@ -2,6 +2,7 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from "../styles/Dashboard.module.css"
 import { LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from '@solana/web3.js'
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 
 export default function Dashboard() {
 	const [showBtn, useShowBtn] = useState(true)
@@ -63,7 +64,10 @@ export default function Dashboard() {
 					<button className={styles.sendButton} onClick={handleTransaction} disabled={!showBtn}>Send</button>
 					{lastTrnSignature && <p>Last Transaction Signature: {lastTrnSignature}</p>}
 				</div> :
-				<h2>Connect to your wallet</h2>
+				<>
+					<h2>Connect to your wallet</h2>
+					<WalletMultiButton />
+				</>
 			}
 		</>
 		
